@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTodayTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's Mood by Time Slot"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChartToday"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"/>
+
+    <TextView
+        android:id="@+id/tvWeekTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weekly Mood Trend"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChartWeek"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+
+</LinearLayout>

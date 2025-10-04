@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/bg_card"
+    android:layout_marginBottom="16dp">
+
+    <TextView
+        android:id="@+id/hydrationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hydration Reminder"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/hydrationIntervalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interval: 60 min"
+        android:textSize="16sp"
+        android:paddingTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnSetHydrationInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Interval"
+        android:layout_marginTop="8dp"/>
+    <Button
+        android:id="@+id/btn_add_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Reminder" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_reminders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp" />
+
+
+</LinearLayout>
+
