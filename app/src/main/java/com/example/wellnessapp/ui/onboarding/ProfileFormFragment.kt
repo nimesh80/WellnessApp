@@ -23,9 +23,18 @@ class ProfileFormFragment : Fragment() {
         binding = FragmentProfileFormBinding.inflate(inflater, container, false)
         prefs = SharedPrefsManager(requireContext())
 
+        // ✨ CHANGED: Setup Gender Spinner with custom layouts
+        val genders = listOf("Male", "Female", "Non-binary", "Prefer not to say")
+        val genderAdapter = ArrayAdapter(requireContext(), com.example.wellnessapp.R.layout.spinner_item, genders)
+        genderAdapter.setDropDownViewResource(com.example.wellnessapp.R.layout.spinner_dropdown_item)
+        binding.genderSpinner.adapter = genderAdapter
+
+        // ✨ CHANGED: Setup Goal Spinner with custom layouts
         val goals = listOf("Improve Health", "Manage Stress", "Increase Productivity", "Other")
-        binding.goalSpinner.adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, goals)
+
+        val adapter = ArrayAdapter(requireContext(), com.example.wellnessapp.R.layout.spinner_item, goals)
+        adapter.setDropDownViewResource(com.example.wellnessapp.R.layout.spinner_dropdown_item)
+        binding.goalSpinner.adapter = adapter
 
         // Show/hide custom goal input when "Other" selected
         binding.goalSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
@@ -48,7 +57,8 @@ class ProfileFormFragment : Fragment() {
         binding.btnSaveProfile.setOnClickListener {
             val name = binding.etName.text.toString().trim()
             val email = binding.etEmail.text.toString().trim()
-            val gender = binding.etGender.text.toString().trim()
+// ✨ CHANGED: Get gender from spinner instead of EditText
+            val gender = binding.genderSpinner.selectedItem.toString()
             val age = binding.etAge.text.toString().toIntOrNull() ?: 0
             var goal = binding.goalSpinner.selectedItem.toString()
 

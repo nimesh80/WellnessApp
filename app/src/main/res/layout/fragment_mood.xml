@@ -1,45 +1,123 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
+    android:background="@color/background_light">
 
-    <!-- Mood List Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mood Journal"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:textStyle="bold"/>
-
-    <!-- Calendar Button -->
-    <Button
-        android:id="@+id/btnCalendarView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Calendar"/>
-    <Button
-        android:id="@+id/btnChartView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Charts"/>
-
-
-    <!-- Recycler -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMoods"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Floating Add Button -->
+        <!-- Header Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mood Journal"
+            android:textSize="28sp"
+            android:textColor="@color/primary_green"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track your emotional wellness journey"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Action Buttons Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <!-- Calendar View Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalendarView"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Calendar"
+                android:textSize="14sp"
+                android:textColor="@color/primary_green"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/primary_green"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/white"
+                android:textAllCaps="false"/>
+
+            <!-- Chart View Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChartView"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Charts"
+                android:textSize="14sp"
+                android:textColor="@color/primary_green"
+                android:layout_marginStart="8dp"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/primary_green"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/white"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+        <!-- Mood Entries Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recent Moods"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swipe to edit"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"/>
+        </LinearLayout>
+
+        <!-- RecyclerView for Moods -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMoods"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp"/>
+
+    </LinearLayout>
+
+    <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddMood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"/>
-</LinearLayout>
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        android:contentDescription="Add Mood"
+        app:tint="@color/white"
+        app:backgroundTint="@color/accent_yellow"
+        app:elevation="6dp"
+        app:borderWidth="0dp"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

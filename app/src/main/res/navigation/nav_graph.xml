@@ -19,7 +19,15 @@
     <fragment
         android:id="@+id/moodFragment"
         android:name="com.example.wellnessapp.ui.mood.MoodFragment"
-        android:label="Mood Journal" />
+        android:label="Mood Journal">
+        <!-- ADD THESE ACTIONS -->
+        <action
+            android:id="@+id/action_moodFragment_to_moodCalendarFragment"
+            app:destination="@id/moodCalendarFragment" />
+        <action
+            android:id="@+id/action_moodFragment_to_moodChartFragment"
+            app:destination="@id/moodChartFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/moodCalendarFragment"
@@ -52,6 +60,7 @@
         android:name="com.example.wellnessapp.ui.reminder.ReminderFragment"
         android:label="Reminders"
         tools:layout="@layout/fragment_reminder" />
+
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.example.wellnessapp.ui.onboarding.OnboardingFragment"
@@ -80,7 +89,5 @@
         android:name="com.example.wellnessapp.ui.settings.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
-
-
 
 </navigation>

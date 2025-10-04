@@ -1,9 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.WellnessApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Main App Theme -->
+    <style name="Theme.WellnessApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryVariant">@color/primary_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/accent_yellow</item>
+        <item name="colorSecondaryVariant">@color/accent_orange</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/primary_green</item>
+
+        <!-- Dialog themes -->
+        <item name="alertDialogTheme">@style/CustomAlertDialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/CustomAlertDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/CustomAlertDialogTheme</item>
     </style>
 
-    <style name="Theme.WellnessApp" parent="Base.Theme.WellnessApp" />
+    <!-- Custom Alert Dialog Theme -->
+    <style name="CustomAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- Background -->
+        <item name="android:background">@android:color/white</item>
+        <item name="backgroundTint">@android:color/white</item>
+
+        <!-- Title text color -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitleTextStyle</item>
+
+        <!-- Message/content text color -->
+        <item name="android:textColorSecondary">@android:color/black</item>
+
+        <!-- EditText colors -->
+        <item name="editTextStyle">@style/CustomEditTextStyle</item>
+        <item name="android:editTextColor">@android:color/black</item>
+        <item name="android:textColor">@android:color/black</item>
+
+        <!-- EditText hint and line colors -->
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="colorControlActivated">@color/primary_green</item>
+        <item name="colorControlHighlight">@color/primary_green</item>
+
+        <!-- Button styles -->
+        <item name="buttonBarPositiveButtonStyle">@style/Dialog.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Dialog.Button.Negative</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Dialog.Button.Neutral</item>
+    </style>
+
+    <!-- Dialog Title Text Style -->
+    <style name="DialogTitleTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- Custom EditText Style -->
+    <style name="CustomEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+
+    <!-- Positive Button Style (Save, Add, OK, Update) -->
+    <style name="Dialog.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primary_green</item>
+        <item name="rippleColor">@color/primary_green</item>
+    </style>
+
+    <!-- Negative Button Style (Cancel) -->
+    <style name="Dialog.Button.Negative" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Neutral Button Style (Skip) -->
+    <style name="Dialog.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
 </resources>

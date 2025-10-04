@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="8dp"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/background_white">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMoodSelection"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Dialog Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How are you feeling?"
+            android:textSize="22sp"
+            android:textColor="@color/primary_green"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your current mood"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- RecyclerView for Mood Options -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMoodSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="400dp"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

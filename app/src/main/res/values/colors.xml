@@ -4,15 +4,45 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- 60% Soft Blue-Gray -->
-    <color name="soft_blue_gray">#F5F7FA</color>
+    <!-- Primary Colors - Fresh Green Palette -->
+    <color name="primary_green">#10B981</color>
+    <color name="primary_green_light">#34D399</color>
+    <color name="primary_green_dark">#059669</color>
 
-    <!-- 30% Deep Teal -->
-    <color name="deep_teal">#FF2C7A7B</color>
+    <!-- Secondary Colors - Sunny Yellow/Orange -->
+    <color name="accent_yellow">#FBBF24</color>
+    <color name="accent_orange">#F59E0B</color>
+    <color name="accent_yellow_light">#FCD34D</color>
 
-    <!-- 10% Vibrant Green -->
-    <color name="vibrant_green">#FF38A169</color>
+    <!-- Background Colors -->
+    <color name="background_light">#F0FDF4</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="background_card">#FFFFFF</color>
 
-    <!-- Optional accent -->
-    <color name="purple_200">#FFBB86FC</color>
+    <!-- Neutral Colors -->
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+
+    <!-- Accent Colors -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    <color name="info">#3B82F6</color>
+
+    <!-- Additional Wellness Colors -->
+    <color name="mint_fresh">#6EE7B7</color>
+    <color name="lime_energy">#84CC16</color>
+    <color name="sky_calm">#7DD3FC</color>
+
+    <!-- Overlay & Shadow -->
+    <color name="overlay_dark">#80000000</color>
+    <color name="shadow">#1A000000</color>
+
+    <!-- Gradients (for drawable usage) -->
+    <color name="gradient_start">#10B981</color>
+    <color name="gradient_end">#34D399</color>
+
+    <!-- Legacy color (for compatibility with existing layouts) -->
+    <color name="purple_200">#BBDEFB</color>
 </resources>

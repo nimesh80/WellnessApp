@@ -1,5 +1,6 @@
 package com.example.wellnessapp.ui.habits
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,7 +71,10 @@ class HabitFragment : Fragment() {
     }
 
     private fun showAddHabitDialog() {
-        val input = EditText(requireContext())
+        val input = EditText(requireContext()).apply {
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
+        }
         AlertDialog.Builder(requireContext())
             .setTitle("Add Habit")
             .setView(input)

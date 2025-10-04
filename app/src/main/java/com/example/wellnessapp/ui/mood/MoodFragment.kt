@@ -1,5 +1,6 @@
 package com.example.wellnessapp.ui.mood
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,7 +70,7 @@ class MoodFragment : Fragment() {
 
         val dialogBinding = layoutInflater.inflate(R.layout.dialog_mood_selection, null)
         val recyclerView = dialogBinding.findViewById<RecyclerView>(R.id.recyclerMoodSelection)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext()) // list view
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         recyclerView.addItemDecoration(
             DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
@@ -91,6 +92,8 @@ class MoodFragment : Fragment() {
     private fun showAddNoteDialog(selectedMood: MoodOption) {
         val input = EditText(requireContext()).apply {
             hint = "Add a note (optional)"
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
         }
 
         MaterialAlertDialogBuilder(requireContext())
@@ -109,6 +112,8 @@ class MoodFragment : Fragment() {
         val emojis = arrayOf("😀", "😐", "😔", "😡", "🥳", "😴")
         val input = EditText(requireContext()).apply {
             setText(mood.note)
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
         }
 
         MaterialAlertDialogBuilder(requireContext())

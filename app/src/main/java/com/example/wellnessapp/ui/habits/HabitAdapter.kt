@@ -1,6 +1,7 @@
 package com.example.wellnessapp.ui.habits
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,8 +75,11 @@ class HabitAdapter(
 
     private fun showEditDialog(holder: HabitViewHolder, habit: Habit, position: Int) {
         val context = holder.itemView.context
-        val input = EditText(context)
-        input.setText(habit.title)
+        val input = EditText(context).apply {
+            setText(habit.title)
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
+        }
 
         AlertDialog.Builder(context)
             .setTitle("Edit Habit")

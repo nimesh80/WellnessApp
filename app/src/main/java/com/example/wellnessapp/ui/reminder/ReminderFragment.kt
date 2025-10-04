@@ -3,6 +3,7 @@ package com.example.wellnessapp.ui.reminder
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -53,9 +54,12 @@ class ReminderFragment : Fragment() {
     }
 
     private fun showIntervalPicker() {
-        val editText = EditText(requireContext())
-        editText.hint = "Enter interval in minutes"
-        editText.inputType = android.text.InputType.TYPE_CLASS_NUMBER
+        val editText = EditText(requireContext()).apply {
+            hint = "Enter interval in minutes"
+            inputType = android.text.InputType.TYPE_CLASS_NUMBER
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
+        }
 
         AlertDialog.Builder(requireContext())
             .setTitle("Set Hydration Interval")
@@ -85,7 +89,7 @@ class ReminderFragment : Fragment() {
         cal.add(Calendar.MINUTE, minutes)
 
         val hydrationReminder = Reminder(
-            id = 9999, // fixed ID for hydration
+            id = 9999,
             title = "Hydration Reminder",
             timeMillis = cal.timeInMillis
         )
@@ -100,8 +104,11 @@ class ReminderFragment : Fragment() {
     }
 
     private fun askForTitle() {
-        val editText = EditText(requireContext())
-        editText.hint = "Enter reminder title"
+        val editText = EditText(requireContext()).apply {
+            hint = "Enter reminder title"
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
+        }
 
         AlertDialog.Builder(requireContext())
             .setTitle("New Reminder")
@@ -141,8 +148,11 @@ class ReminderFragment : Fragment() {
     }
 
     private fun editReminder(reminder: Reminder) {
-        val editText = EditText(requireContext())
-        editText.setText(reminder.title)
+        val editText = EditText(requireContext()).apply {
+            setText(reminder.title)
+            setTextColor(Color.BLACK)
+            setHintTextColor(Color.GRAY)
+        }
 
         AlertDialog.Builder(requireContext())
             .setTitle("Edit Reminder")
