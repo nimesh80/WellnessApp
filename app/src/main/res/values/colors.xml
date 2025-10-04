@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Basic colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="purple_200">#FFBB86FC</color>
 
+    <!-- 60% Soft Blue-Gray -->
+    <color name="soft_blue_gray">#F5F7FA</color>
+
+    <!-- 30% Deep Teal -->
+    <color name="deep_teal">#FF2C7A7B</color>
+
+    <!-- 10% Vibrant Green -->
+    <color name="vibrant_green">#FF38A169</color>
+
+    <!-- Optional accent -->
+    <color name="purple_200">#FFBB86FC</color>
 </resources>

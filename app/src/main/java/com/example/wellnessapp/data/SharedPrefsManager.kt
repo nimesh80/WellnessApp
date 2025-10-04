@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class SharedPrefsManager(context: Context) {
-    private val prefs: SharedPreferences =
+    val prefs: SharedPreferences =
         context.getSharedPreferences("wellness_prefs", Context.MODE_PRIVATE)
 
     private val gson = Gson()

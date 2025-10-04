@@ -74,7 +74,7 @@ class ProfileFormFragment : Fragment() {
             prefs.saveUserProfile(profile)
             prefs.setUserOnboarded(true)
 
-            findNavController().navigate(com.example.wellnessapp.R.id.action_profileFormFragment_to_habitFragment)
+            findNavController().navigate(com.example.wellnessapp.R.id.action_profileFormFragment_to_dashboardFragment)
         }
 
         return binding.root

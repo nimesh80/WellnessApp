@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wellnessapp.R
@@ -24,7 +25,7 @@ data class MoodOption(val emoji: String, val label: String)
 class MoodFragment : Fragment() {
 
     private lateinit var binding: FragmentMoodBinding
-    private val moodViewModel: MoodViewModel by viewModels()
+    private val moodViewModel: MoodViewModel by activityViewModels()
     private lateinit var adapter: MoodAdapter
 
     override fun onCreateView(

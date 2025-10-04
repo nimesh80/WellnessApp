@@ -10,15 +10,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wellnessapp.R
 import com.example.wellnessapp.data.SharedPrefsManager
-import com.example.wellnessapp.data.Mood
-import com.example.wellnessapp.data.Reminder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.text.SimpleDateFormat
-import java.util.*
 
 class HabitFragment : Fragment() {
 
@@ -27,13 +24,7 @@ class HabitFragment : Fragment() {
     private lateinit var progressText: TextView
     private lateinit var fabAddHabit: FloatingActionButton
 
-    // Dashboard UI
-    private lateinit var lastMoodText: TextView
-    private lateinit var nextReminderText: TextView
-    private lateinit var hydrationStatusText: TextView
-    private lateinit var hydrationIntervalText: TextView
-
-    private val habitViewModel: HabitViewModel by viewModels()
+    private val habitViewModel: HabitViewModel by activityViewModels()
     private lateinit var habitAdapter: HabitAdapter
     private lateinit var prefs: SharedPrefsManager
 
@@ -46,10 +37,6 @@ class HabitFragment : Fragment() {
         progressBar = view.findViewById(R.id.progressBar)
         progressText = view.findViewById(R.id.progressText)
         fabAddHabit = view.findViewById(R.id.fabAddHabit)
-
-        lastMoodText = view.findViewById(R.id.lastMoodText)
-        nextReminderText = view.findViewById(R.id.nextReminderText)
-        hydrationStatusText = view.findViewById(R.id.hydrationStatusText)
 
         prefs = SharedPrefsManager(requireContext())
 
@@ -79,8 +66,6 @@ class HabitFragment : Fragment() {
 
         fabAddHabit.setOnClickListener { showAddHabitDialog() }
 
-        loadDashboardData()
-
         return view
     }
 
@@ -104,45 +89,5 @@ class HabitFragment : Fragment() {
         val progress = habitViewModel.getProgress()
         progressBar.progress = progress.toInt()
         progressText.text = "Progress: ${progress.toInt()}%"
-    }
-
-    private fun loadDashboardData() {
-        // Last Mood
-        val moods = prefs.loadMoods()
-        if (moods.isNotEmpty()) {
-            val lastMood = moods.last()
-            val date = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault()).format(Date(lastMood.date))
-            lastMoodText.text = "Last Mood: ${lastMood.emoji} ${lastMood.note} ($date)"
-        } else {
-            lastMoodText.text = "Last Mood: None"
-        }
-
-        // Next Reminder
-        val reminders = prefs.loadReminders().filter { it.isActive }
-        if (reminders.isNotEmpty()) {
-            val next = reminders.minByOrNull { it.timeMillis }
-            if (next != null) {
-                val time = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(next.timeMillis))
-                nextReminderText.text = "Next Reminder: ${next.title} at $time"
-            } else {
-                nextReminderText.text = "Next Reminder: None"
-            }
-        } else {
-            nextReminderText.text = "Next Reminder: None"
-        }
-
-        // Hydration Reminder Status
-        val hydrationStatus = prefs.loadHydrationStatus()
-        val hydrationInterval = prefs.loadHydrationInterval()
-        hydrationStatusText.text = if (hydrationStatus) {
-            "Active (Every $hydrationInterval min)"
-        } else {
-            "Inactive"
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loadDashboardData() // Refresh dashboard when returning
     }
 }

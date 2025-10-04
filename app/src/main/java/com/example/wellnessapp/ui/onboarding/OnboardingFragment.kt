@@ -30,7 +30,7 @@ class OnboardingFragment : Fragment() {
 
             if (profile != null && profile.name.isNotEmpty() && profile.email.isNotEmpty()) {
                 // Profile exists → Go to Habit page
-                findNavController().navigate(R.id.action_onboardingFragment_to_habitFragment)
+                findNavController().navigate(R.id.action_onboardingFragment_to_dashboardFragment)
             } else {
                 Toast.makeText(requireContext(), "Please set up your profile first!", Toast.LENGTH_SHORT).show()
             }

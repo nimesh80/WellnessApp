@@ -6,6 +6,12 @@
     app:startDestination="@id/onboardingFragment" >
 
     <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.wellnessapp.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
         android:id="@+id/habitFragment"
         android:name="com.example.wellnessapp.ui.habits.HabitFragment"
         android:label="Habits" />
@@ -55,8 +61,8 @@
             android:id="@+id/action_onboardingFragment_to_profileFormFragment"
             app:destination="@id/profileFormFragment" />
         <action
-            android:id="@+id/action_onboardingFragment_to_habitFragment"
-            app:destination="@id/habitFragment" />
+            android:id="@+id/action_onboardingFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 
     <fragment
@@ -65,8 +71,8 @@
         android:label="Profile Form"
         tools:layout="@layout/fragment_profile_form">
         <action
-            android:id="@+id/action_profileFormFragment_to_habitFragment"
-            app:destination="@id/habitFragment" />
+            android:id="@+id/action_profileFormFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 
     <fragment
