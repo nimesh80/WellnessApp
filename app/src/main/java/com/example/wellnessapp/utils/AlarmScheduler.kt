@@ -10,8 +10,13 @@ class AlarmScheduler(private val context: Context) {
 
     fun schedule(reminder: Reminder) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val isHydration = reminder.id == 9999
+
         val intent = Intent(context, ReminderReceiver::class.java).apply {
             putExtra("title", reminder.title)
+            putExtra("is_hydration", isHydration)
+            putExtra("reminder_id", reminder.id)
         }
 
         val pendingIntent = PendingIntent.getBroadcast(
@@ -21,8 +26,7 @@ class AlarmScheduler(private val context: Context) {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        // Changed to normal alarm to avoid permission crash
-        alarmManager.set(
+        alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             reminder.timeMillis,
             pendingIntent
@@ -39,5 +43,6 @@ class AlarmScheduler(private val context: Context) {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         alarmManager.cancel(pendingIntent)
+        pendingIntent.cancel()
     }
 }

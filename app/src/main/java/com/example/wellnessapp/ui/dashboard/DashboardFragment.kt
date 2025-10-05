@@ -9,7 +9,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.example.wellnessapp.R
 import com.example.wellnessapp.data.SharedPrefsManager
 import com.example.wellnessapp.ui.habits.HabitViewModel
@@ -46,12 +45,11 @@ class DashboardFragment : Fragment() {
         // Observe habits LiveData
         habitViewModel.habits.observe(viewLifecycleOwner) {
             updateProgress()
-            loadDashboardData()
         }
 
-        // Observe moods LiveData
+        // Observe moods LiveData - FIXED: Now properly updates when moods change
         moodViewModel.moods.observe(viewLifecycleOwner) {
-            loadDashboardData()
+            updateLastMood()
         }
 
         // Listen for reminder & hydration changes
@@ -63,28 +61,35 @@ class DashboardFragment : Fragment() {
     private val prefsListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             if (key in listOf("reminders", "hydration_status", "hydration_interval")) {
-                loadDashboardData()
+                loadReminderData()
             }
         }
 
     private fun updateProgress() {
         val progress = habitViewModel.getProgress()
         progressBar.progress = progress.toInt()
-        progressText.text = "Progress: ${progress.toInt()}%"
+        progressText.text = "${progress.toInt()}%"
     }
 
-    private fun loadDashboardData() {
-        // Last Mood
-        val moods = prefs.loadMoods()
-        if (moods.isNotEmpty()) {
-            val lastMood = moods.last()
-            val date = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault())
-                .format(Date(lastMood.date))
-            lastMoodText.text = "Last Mood: ${lastMood.emoji} ${lastMood.note} ($date)"
-        } else {
-            lastMoodText.text = "Last Mood: None"
-        }
+    // FIXED: Separated mood update logic
+    private fun updateLastMood() {
+        val moods = moodViewModel.moods.value
+        if (!moods.isNullOrEmpty()) {
+            val lastMood = moods.first() // moods are added at position 0, so first is latest
+            val timeFormat = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault())
+            val formattedTime = timeFormat.format(Date(lastMood.date))
 
+            lastMoodText.text = if (lastMood.note.isNotEmpty()) {
+                "${lastMood.emoji} ${lastMood.note}"
+            } else {
+                lastMood.emoji
+            }
+        } else {
+            lastMoodText.text = "None"
+        }
+    }
+
+    private fun loadReminderData() {
         // Next Reminder
         val reminders = prefs.loadReminders().filter { it.isActive }
         if (reminders.isNotEmpty()) {
@@ -92,19 +97,19 @@ class DashboardFragment : Fragment() {
             if (next != null) {
                 val time = SimpleDateFormat("hh:mm a", Locale.getDefault())
                     .format(Date(next.timeMillis))
-                nextReminderText.text = "Next Reminder: ${next.title} at $time"
+                nextReminderText.text = "${next.title} at $time"
             } else {
-                nextReminderText.text = "Next Reminder: None"
+                nextReminderText.text = "None"
             }
         } else {
-            nextReminderText.text = "Next Reminder: None"
+            nextReminderText.text = "None"
         }
 
         // Hydration Reminder Status
         val hydrationStatus = prefs.loadHydrationStatus()
         val hydrationInterval = prefs.loadHydrationInterval()
         hydrationStatusText.text = if (hydrationStatus) {
-            "Active (Every $hydrationInterval min)"
+            "Every $hydrationInterval min"
         } else {
             "Inactive"
         }
@@ -112,7 +117,8 @@ class DashboardFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        loadDashboardData()
+        updateLastMood()
+        loadReminderData()
     }
 
     override fun onDestroyView() {

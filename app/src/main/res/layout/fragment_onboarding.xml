@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light"
@@ -17,31 +18,13 @@
             android:layout_width="1dp"
             android:layout_height="40dp"/>
 
-        <!-- Logo/Icon Placeholder with fresh green circle -->
-        <FrameLayout
+        <!-- Logo Image -->
+        <ImageView
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_marginBottom="32dp">
-
-            <View
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:background="@color/primary_green"
-                android:alpha="0.15"/>
-
-            <View
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:background="@color/primary_green_light"
-                android:alpha="0.3"/>
-
-            <View
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="@color/primary_green"/>
-        </FrameLayout>
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/logo_wellbit"
+            android:contentDescription="Wellbit Logo"/>
 
         <!-- Welcome Text -->
         <TextView
@@ -55,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wellness Tracker"
+            android:text="WELLBIT"
             android:textSize="36sp"
             android:textColor="@color/primary_green"
             android:textStyle="bold"
@@ -85,7 +68,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp">
 
-            <!-- Feature 1: Habits -->
+            <!-- Feature 1: Daily Habits -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,11 +79,23 @@
                 android:elevation="2dp"
                 android:layout_marginBottom="12dp">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@color/primary_green"
-                    android:alpha="0.2"/>
+                    android:layout_height="48dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/primary_green"
+                        android:alpha="0.2"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_habit"
+                        app:tint="@color/primary_green"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -127,7 +122,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature 2: Mood -->
+            <!-- Feature 2: Mood Journal -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,11 +133,23 @@
                 android:elevation="2dp"
                 android:layout_marginBottom="12dp">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@color/accent_yellow"
-                    android:alpha="0.3"/>
+                    android:layout_height="48dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/accent_yellow"
+                        android:alpha="0.3"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_mood"
+                        app:tint="@color/accent_yellow"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -169,7 +176,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Feature 3: Reminders -->
+            <!-- Feature 3: Smart Reminders -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,11 +186,23 @@
                 android:background="@color/background_white"
                 android:elevation="2dp">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@color/mint_fresh"
-                    android:alpha="0.4"/>
+                    android:layout_height="48dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/mint_fresh"
+                        android:alpha="0.4"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_notifications"
+                        app:tint="@color/mint_fresh"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"

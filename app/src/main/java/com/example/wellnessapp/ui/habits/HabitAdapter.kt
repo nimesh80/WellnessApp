@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -55,7 +56,7 @@ class HabitAdapter(
                         true
                     }
                     R.id.deleteHabit -> {
-                        onDeleteHabit(position)
+                        showDeleteConfirmDialog(holder, position)
                         true
                     }
                     else -> false
@@ -73,26 +74,77 @@ class HabitAdapter(
         notifyDataSetChanged()
     }
 
+    // FIXED: Edit dialog with white background and black text
     private fun showEditDialog(holder: HabitViewHolder, habit: Habit, position: Int) {
         val context = holder.itemView.context
+
+        // Create EditText with proper styling
         val input = EditText(context).apply {
             setText(habit.title)
             setTextColor(Color.BLACK)
             setHintTextColor(Color.GRAY)
+            setBackgroundColor(Color.WHITE)
+            setPadding(50, 30, 50, 30)
+        }
+
+        // Create container with white background
+        val container = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            setBackgroundColor(Color.WHITE)
+            setPadding(60, 40, 60, 20)
+            addView(input)
         }
 
         AlertDialog.Builder(context)
             .setTitle("Edit Habit")
-            .setView(input)
-            .setPositiveButton("Save") { _, _ ->
+            .setView(container)
+            .setPositiveButton("Save") { dialog, _ ->
                 val newTitle = input.text.toString().trim()
                 if (newTitle.isNotEmpty()) {
                     habit.title = newTitle
                     habit.date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
                     onEditHabit(habit, position)
                 }
+                dialog.dismiss()
             }
-            .setNegativeButton("Cancel", null)
-            .show()
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .apply {
+                // Set dialog background to white
+                window?.setBackgroundDrawableResource(android.R.color.white)
+                show()
+
+                // Set button text colors to be visible
+                getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(Color.parseColor("#4CAF50"))
+                getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(Color.parseColor("#757575"))
+            }
+    }
+
+    // FIXED: Delete confirmation dialog with white background
+    private fun showDeleteConfirmDialog(holder: HabitViewHolder, position: Int) {
+        val context = holder.itemView.context
+
+        AlertDialog.Builder(context)
+            .setTitle("Delete Habit")
+            .setMessage("Are you sure you want to delete this habit?")
+            .setPositiveButton("Delete") { dialog, _ ->
+                onDeleteHabit(position)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .apply {
+                // Set dialog background to white
+                window?.setBackgroundDrawableResource(android.R.color.white)
+                show()
+
+                // Set button text colors
+                getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(Color.parseColor("#F44336"))
+                getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(Color.parseColor("#757575"))
+            }
     }
 }

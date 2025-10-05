@@ -63,12 +63,24 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@color/primary_green"
-                    android:alpha="0.15"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/primary_green"
+                        android:alpha="0.15"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/primary_green"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -134,12 +146,24 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@color/accent_yellow"
-                    android:alpha="0.2"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/accent_yellow"
+                        android:alpha="0.2"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_notifications"
+                        app:tint="@color/accent_yellow"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -205,12 +229,24 @@
                 android:padding="16dp"
                 android:gravity="center_vertical">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@color/error"
-                    android:alpha="0.15"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/error"
+                        android:alpha="0.15"/>
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_delete"
+                        app:tint="@color/error"/>
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
